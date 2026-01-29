@@ -1,0 +1,25 @@
+{
+    "name": "ec2-auto-monitor-lambda",
+    "version": "1.0.0",
+    "description": "AWS Lambda function to monitor EC2 instances and auto-stop when CPU exceeds limits",
+    "main": "instance-auto-monitor.js",
+    "scripts": {
+        "package": "zip -r instance-auto-monitor.zip instance-auto-monitor.js package.json",
+        "package-win": "powershell Compress-Archive -Path instance-auto-monitor.js,package.json -DestinationPath instance-auto-monitor.zip -Force",
+        "deploy": "aws lambda update-function-code --function-name ec2-auto-monitor --zip-file fileb://instance-auto-monitor.zip",
+        "create": "aws lambda create-function --function-name ec2-auto-monitor --runtime nodejs18.x --role arn:aws:iam::YOUR_ACCOUNT_ID:role/lambda-ec2-monitor-role --handler instance-auto-monitor.handler --zip-file fileb://instance-auto-monitor.zip --timeout 300 --memory-size 256"
+    },
+    "dependencies": {
+        "@aws-sdk/client-ec2": "^3.0.0",
+        "@aws-sdk/client-cloudwatch": "^3.0.0"
+    },
+    "keywords": [
+        "aws",
+        "lambda",
+        "ec2",
+        "monitoring",
+        "auto-shutdown"
+    ],
+    "author": "Cloud Cost Optimizer",
+    "license": "MIT"
+}

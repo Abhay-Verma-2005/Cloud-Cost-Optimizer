@@ -1,0 +1,52 @@
+{
+    "name": "cloud-cost-optimizer",
+    "version": "1.0.0",
+    "description": "AWS Cloud Cost Optimization Platform",
+    "main": "server/server.js",
+    "type": "commonjs",
+    "engines": {
+        "node": "22"
+    },
+    "scripts": {
+        "client": "cd client && vite",
+        "server": "cd server && node server.js",
+        "dev:server": "cd server && nodemon server.js",
+        "dev:client": "cd client && npm run dev",
+        "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+        "build:client": "cd client && npm run build",
+        "build": "npm run build:client",
+        "vercel-build": "cd client && npm install && npm run build",
+        "start": "node server/server.js",
+        "install:all": "npm install && cd client && npm install && cd ../server && npm install"
+    },
+    "dependencies": {
+        "@aws-sdk/client-cloudwatch": "^3.470.0",
+        "@aws-sdk/client-cost-explorer": "^3.470.0",
+        "@aws-sdk/client-ec2": "^3.470.0",
+        "@aws-sdk/client-lambda": "^3.928.0",
+        "@aws-sdk/client-rds": "^3.928.0",
+        "@aws-sdk/client-sts": "^3.929.0",
+        "@aws-sdk/credential-providers": "^3.470.0",
+        "@google/generative-ai": "^0.24.1",
+        "bcryptjs": "^2.4.3",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "jsonwebtoken": "^9.0.2",
+        "marked": "^17.0.0",
+        "mongodb": "^6.5.0",
+        "dompurify": "^3.3.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.21.0",
+        "chart.js": "^4.4.0",
+        "react-chartjs-2": "^5.2.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.2.48",
+        "@types/react-dom": "^18.2.18",
+        "@vitejs/plugin-react": "^4.2.1",
+        "vite": "^5.0.11",
+        "nodemon": "^3.0.2",
+        "concurrently": "^8.2.2"
+    }
+}

@@ -259,7 +259,7 @@ if (GEMINI_API_KEY && GEMINI_API_KEY !== 'your_gemini_api_key_here') {
 const MOCK_AWS_SECRET_KEY = process.env.MOCK_AWS_SECRET_KEY;
 
 // Serve static files from the React app (production build)
-app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 
 
